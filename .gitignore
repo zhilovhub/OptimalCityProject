@@ -1,2 +1,6 @@
 .idea
 venv
+
+# Yandex Cloud Credentials
+key.json
+auth.sh
