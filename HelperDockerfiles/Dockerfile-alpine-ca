@@ -1,0 +1,7 @@
+FROM alpine:latest
+
+ARG certname
+
+COPY $certname /usr/local/share/ca-certificates/
+
+RUN apk update && apk upgrade && apk --no-cache add curl && update-ca-certificates

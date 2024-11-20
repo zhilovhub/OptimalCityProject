@@ -1,5 +1,9 @@
-stages:
+stages:  # Стадия deploy проходит по модели GitOps с использованием ArgoCD
   - test
+  - build
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs/client"
 
 .interruptible_job:
   interruptible: true
@@ -16,3 +20,20 @@ test-lint-job:
     - pip install ruff
     - ruff format --check
     - ruff check
+
+build-job:
+  stage: build
+  extends:
+    - .interruptible_job
+  image:
+    name: docker:27.3.1
+    pull_policy: if-not-present
+  services:
+    - name: docker:dind  # Мой собственный контейнер с HelperDockerfiles/Dockerfile-dind-ca
+      pull_policy: never
+      alias: docker
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/flask-app .
+    - docker push $CI_REGISTRY_IMAGE/flask-app
