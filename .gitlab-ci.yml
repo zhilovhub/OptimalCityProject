@@ -35,5 +35,5 @@ build-job:
   before_script:
     - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
   script:
-    - docker build -t $CI_REGISTRY_IMAGE/flask-app .
-    - docker push $CI_REGISTRY_IMAGE/flask-app
+    - docker build -t $CI_REGISTRY_IMAGE/flask-app:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE/flask-app:$CI_COMMIT_SHORT_SHA
