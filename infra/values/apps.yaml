@@ -4,3 +4,4 @@ spec:
         targetRevision: HEAD
     destination:
         server: https://kubernetes.default.svc
+    registry: 89.169.171.91:7000/zhilovhub/optimalcityproject/flask-app

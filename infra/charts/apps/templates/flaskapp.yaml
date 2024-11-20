@@ -8,9 +8,9 @@ metadata:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-#  annotations:
-#    argocd-image-updater.argoproj.io/chart-version: ~ 1.0
-#    argocd-image-updater.argoproj.io/pull-secret: pullsecret:myproject-production/myproject-regcred
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: flaskapp={{ .Values.spec.registry }}
+    argocd-image-updater.argoproj.io/flaskapp.update-strategy: latest
   name: flaskapp
   namespace: argocd
 spec:
