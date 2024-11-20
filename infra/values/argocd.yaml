@@ -1,0 +1,28 @@
+configs:
+    repositories:
+        infra:
+            password: ENC[AES256_GCM,data:n1y05LSosbniYjGKhRFRRCMs4ZVuggZkRFc=,iv:Wd44KBYWf4/bGVUxYUFqnHS+XRIARUgy4oFKjZDHoog=,tag:+fc7Mu8eRywwb2fNePVfUw==,type:str]
+            type: ENC[AES256_GCM,data:whb9,iv:l7g09k0zhmsTBH6zVD8Dg9r/HsVjHqR3es4Dm29nW2Y=,tag:X1NiHCOn5IScQAbq2Uz3oQ==,type:str]
+            insecure: ENC[AES256_GCM,data:8CkjDQ==,iv:hLKAUTZVh2pRqY2wotXKHUuT8uhUwtLQrrv3R5B88Ws=,tag:4kfyjdJ8X+5Av+JcjUauLA==,type:str]
+            url: ENC[AES256_GCM,data:1hP7mNtNZi6DaDqZbkTvc5dtZ94ZNa6DtU4CxKNLRezpdqxjVVCO/FDilxnaIYYTXnELzfwy,iv:xkGYXNXISnyB5niiRMW5foiwRtGlXxgs2TeA6KatYCc=,tag:ep+dF7CLOhniiiivymMF5A==,type:str]
+            username: ENC[AES256_GCM,data:usexxqP+e1cFQHQ0DLqU,iv:IJB+jcw9Li2INS71bsZEnsgPbmuxzXCUCbHTC2jXtnE=,tag:xTa+e+ZSHat3CX9m3fFWbw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1c9zz7wdv56gdsycv5l60zhjeng7y4gtm7qhzd9qrzc2e332lk3vsrwsxuy
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSArclNkWm5ialkxbzJOU0t0
+            cS9qTWs3ZVdMWStURXFsWnJEN1lNNXorVWwwCk1QMGFzb2d3dUJvNDc5UWpNdFA5
+            MC9SRzZHRml5WEZNYzI0dTNNUVdXRFUKLS0tIDFmQ20xSUZpZVdYNXp0eE9jTXpj
+            Y1NxOGVOdHVHd0hSZFNZZXFqcVJCU0kKhMZMl0xyk3DZgqXDoXqLScKtdI6XRoW/
+            d0Vbe0tV8c+BMd7yvZOGdX/UOq8PCkftNAnkMLsZdVr6u07ep7g+SA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-11-20T15:32:56Z"
+    mac: ENC[AES256_GCM,data:oX/tv9Xdv82/qY1P7q9Sy70NMoFC+zaJSq4YIQKnriylDsWKrF3BH5ScukE60K8sfyU/pl95bsLWpV1b8jULW+czq4X07/CjM9vTgkScf92cpESmykBzKZlMBCXgE+UZB9srzo3HTTxf4MSriT/OxfCChsZbtHL1z2SjCqoUQ84=,iv:nXzxvw1R951rAB1mrek4KMsbEFp6jJKBDZadjdXR1Pc=,tag:J6Hd53RffY6HMBht9V2oww==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.9.1
