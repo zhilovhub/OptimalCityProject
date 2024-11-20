@@ -1,26 +1,6 @@
 spec:
     source:
-        repoURL: ENC[AES256_GCM,data:sQqta/w+OjsYySKnQbQNlCKB427iZy7wb9Wy6l/YAd6B4y0w4g4ocWhxhpney5jnuUYqq/TD,iv:GFmu0keFa8WjI2TGx2WaDDleLBgzD6/Lu/ss1biEFHo=,tag:tVz42Sdh5oW6A2+JSmmQfg==,type:str]
-        targetRevision: ENC[AES256_GCM,data:nDpDVA==,iv:X+zQXe4erl3EZDGDxWIVBRPu6GRgGy4mDmjRY7dxxn8=,tag:mpHX6bPGCGjOZuP+uRSWcQ==,type:str]
+        repoURL: https://89.169.171.91/zhilovhub/optimalcityproject.git
+        targetRevision: HEAD
     destination:
-        server: ENC[AES256_GCM,data:2HRoKK1cLPLB7NU6ReXHrQ5gxEdVvSFs3S0taSTJ,iv:zXjiy5yS/I/a8KIUigPqe4Xp8D2GWYt9UPR+2iGll68=,tag:qs0yp9yLvbtWRmJdAPUMhA==,type:str]
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1c9zz7wdv56gdsycv5l60zhjeng7y4gtm7qhzd9qrzc2e332lk3vsrwsxuy
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiY3dxeC9Vc0c3TnN2ejZs
-            RHRPRFFRbEFIb3NURE0raGc3azFobUtJem1RCkhWM0cwYVFST0l2M3hWa1hVK0Fi
-            SjRpZjZ3dG9MTnJ5MWh5V3luTDkwNm8KLS0tIEVpa0NQWXRtc2VCblgrbVlNQ0l3
-            TGdLS0d3WU1QL1hXMUtMc3lReWVDZjAK249G9edlyoGP3piNO6Z3YxYCsW+F9AvO
-            yZomdzXLcTyt/EP3/Mp6c3qtt0nZ9cmftrytExh/6sxIc3uIg1ItMw==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-11-20T16:32:57Z"
-    mac: ENC[AES256_GCM,data:7L/YhA5rz7HWOFo164fTyYGS60E4Lmu7vk0giqyUYgikbamKb7WClSSUow8kfejYkysTw7eCUqTSM70/+Zfgwiv/M1WZoHOYQ9AZ6t8pjAfMVx7VWHNg16H1bJ8Gs8aQBnliaAxXTy8sGdrA9KHkB3X+9ABNC7n5Iqu1a5ygL/o=,iv:lV9UF9DWDoEt/MjwgsSktzRh/bzx/XZZl3h5q6jIIeo=,tag:PXpXEzE/m9uoPcJXlWj5Yw==,type:str]
-    pgp: []
-    unencrypted_suffix: _unencrypted
-    version: 3.9.1
+        server: https://kubernetes.default.svc

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flaskapp
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+#  annotations:
+#    argocd-image-updater.argoproj.io/chart-version: ~ 1.0
+#    argocd-image-updater.argoproj.io/pull-secret: pullsecret:myproject-production/myproject-regcred
+  name: flaskapp
+  namespace: argocd
+spec:
+  destination:
+    namespace: flaskapp
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: infra/charts/flaskapp
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    helm:
+      valueFiles:
+        - secrets+age-import:///helm-secrets-private-keys/key.txt?../../values/flaskapp.yaml
+  syncPolicy:
+    automated: {}
