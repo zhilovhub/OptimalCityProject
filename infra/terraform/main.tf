@@ -1,3 +1,8 @@
+locals {
+  k8s-version = "1.27"
+  zone = "ru-central1-b"
+}
+
 // Создание сервисного аккаунта для master node
 resource "yandex_iam_service_account" "master_node_sa" {
   name = "master-node-sa"
@@ -28,7 +33,7 @@ resource "yandex_vpc_network" "default" {
 
 resource "yandex_vpc_subnet" "default-b" {
   v4_cidr_blocks = ["10.2.0.0/16"]
-  zone           = "ru-central1-b"
+  zone           = local.zone
   network_id     = yandex_vpc_network.default.id
 }
 
@@ -39,7 +44,7 @@ resource "yandex_kubernetes_cluster" "zonal_cluster_resource_name" {
   network_id = yandex_vpc_network.default.id
 
   master {
-    version = "1.27"
+    version = local.k8s-version
     zonal {
       zone = yandex_vpc_subnet.default-b.zone
       subnet_id = yandex_vpc_subnet.default-b.id
@@ -55,4 +60,48 @@ resource "yandex_kubernetes_cluster" "zonal_cluster_resource_name" {
     yandex_resourcemanager_folder_iam_member.master_editor,
     yandex_resourcemanager_folder_iam_member.worker_puller
   ]
+}
+
+// Создание группы узлов для Kubernetes-кластера
+resource "yandex_kubernetes_node_group" "k8s_node_group" {
+  cluster_id  = yandex_kubernetes_cluster.zonal_cluster_resource_name.id
+  name        = "k8s-node-group"
+  version     = local.k8s-version
+
+  instance_template {
+    platform_id = "standard-v3"
+
+    resources {
+      memory = 2
+      cores  = 2
+      core_fraction = 20
+    }
+
+    boot_disk {
+      type = "network-hdd"
+      size = 64
+    }
+
+    scheduling_policy {
+      preemptible = true
+    }
+
+    network_interface {
+      nat        = true
+      subnet_ids = [yandex_vpc_subnet.default-b.id]
+    }
+  }
+
+  scale_policy {
+    fixed_scale {
+      size = 1
+    }
+  }
+
+  allocation_policy {
+    location {
+      zone = local.zone
+    }
+  }
+
 }
